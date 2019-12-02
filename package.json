@@ -20,5 +20,10 @@
     "nodes": {
       "spatialite": "spatialite.js"
     }
+  },
+  "homepage": "https://github.com/umasudhan/node-red-contrib-spatialite#README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umasudhan/node-red-contrib-spatialite.git"
   }
 }
