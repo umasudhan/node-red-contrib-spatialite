@@ -66,7 +66,7 @@ module.exports = function(RED) {
                         rows.forEach((row, index)=>{
                             row[outputGeometryFieldName] = geoJsons[index];
                         });
-                        node.send([[rows]]);
+                        node.send({payload:rows});
                     });
                 });
             });
@@ -84,7 +84,6 @@ module.exports = function(RED) {
                         if(err){
                             reject(err);
                         }
-                        console.log('rows1[0]:', JSON.stringify(JSON.parse(rows1[0][outputGeometryFieldName])));
                         resolve(JSON.parse(rows1[0][outputGeometryFieldName]));
                     });
                 }));
