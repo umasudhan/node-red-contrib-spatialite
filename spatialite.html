@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    RED.nodes.registerType('spatialite',{
+        category: 'geo',
+        color: '#3f8bcf',
+        defaults: {
+            name: {value:""},
+            dbPath: {value:"", required: true},
+            geometryColumn: {value:"geom", required: true},
+            outputGeometryFieldName: {value:"geojson", required: true},
+            stripHeader :{value: true},
+            sqlExcludingGeom: { value:"", required: true}
+        },
+        inputs:1,
+        outputs:2,
+        outputLabels: ["stdout","stderr"],
+        icon: "file.png",
+        label: function() {
+            return this.name||"spatialite";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="spatialite">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-dbPath"><i class="icon-tag"></i> Path to db</label>
+        <input type="text" id="node-input-dbPath" placeholder="Path to db">
+    </div>
+        <div class="form-row">
+        <label for="node-input-geometryColumn"><i class="icon-tag"></i> Geometry column name in db</label>
+        <input type="text" id="node-input-geometryColumn" placeholder="Geometry column name in db">
+    </div>
+        <div class="form-row">
+        <label for="node-input-outputGeometryFieldName"><i class="icon-tag"></i> GeoJson field name in output</label>
+        <input type="text" id="node-input-outputGeometryFieldName" placeholder="GeoJson field name in output">
+    </div>
+             <div class="form-row">
+        <label for="node-input-sqlExcludingGeom"><i class="icon-tag"></i> Sql to run against db (excluding geometry)</label>
+        <input type="text" id="node-input-sqlExcludingGeom" placeholder="Sql to run against db (excluding geometry)">
+    </div>
+        <div class="form-row">
+        <label for="node-input-stripHeader"><i class="icon-tag"></i> Strip headers from geometry field</label>
+        <input type="checkbox" id="node-input-stripHeader" placeholder="Strip headers from geometry field">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="lower-case">
+    <p>Allows running spatialite queries against specified sqlite db</p>
+</script>
