@@ -23,7 +23,7 @@ module.exports = function(RED) {
         if (!db) {
             node.send([null, 'Unable to connect to database at '+ dbPath]);
         }
-        let query = sqlExcludingGeom.toLowerCase();
+        let query = sqlExcludingGeom;
         const indexOf = query.indexOf(' ');
         if (indexOf !== -1) {
             query = `${query.slice(0, indexOf + 1)}${geometryColumn}, ${query.slice(indexOf + 1)}`;
