@@ -50,14 +50,22 @@
 <script type="text/x-red" data-help-name="spatialite">
 <p>Allows running spatialite queries against specified sqlite db. Use this node to extract geometry information in geojson
 format from its WKB representation- see http://www.gaia-gis.it/gaia-sins/spatialite-sql-4.3.0.html#p2. node-red-spatialite
-also strips headers as defined at http://www.geopackage.org/spec/#gpb_spec before passing the data to the underlying spatialite library</p>
+also strips headers as defined <a href="http://www.geopackage.org/spec/#gpb_spec">here</a> before passing the data to the underlying spatialite library</p>
 
-  <p><b>UI Configuration</b></p>
+  <p id="UI Configuration"><b>UI Configuration</b></p>
   <p><b>  Name </b> Node name</p>
-  <p><b>  Path to db</b> The path to the db file on the file system</p>
-  <p><b>  Geometry column name in db</b> The column name which contains geometry data in Well Known Binary format</p>
-  <p><b>  GeoJson field name in output</b> The field name of geojson at the output</p>
-  <p><b>  Sql to run against db (excluding geometry)</b> The sql to run against the db- do not include a selector for the geometry field- it will be added automatically</p>
-  <p><b>  Strip headers from geometry field</b> Strips headers so that spatialite can extract underlying geometry information. The headers can be of variable length depending on polygon type and are handled correctly according to the spec at http://www.geopackage.org/spec/#gpb_spec</p>
+  <p><b>  Path to db</b> The path to the db file on the file system. Override with msg.dbPath</p>
+  <p><b>  Geometry column name in db</b> The column name which contains geometry data in Well Known Binary format.
+  Override with msg.geometryColumn</p>
+  <p><b>  GeoJson field name in output</b> The field name of geojson at the output. Override with msg.outputGeometryFieldName</p>
+  <p><b>  Sql to run against db (excluding geometry)</b> The sql to run against the db- do not include a selector for
+  the geometry field- it will be added automatically. Override with msg.sqlExcludingGeom</p>
+  <p><b>  Strip headers from geometry field</b> Strips headers so that spatialite can extract underlying geometry
+  information. The headers can be of variable length depending on polygon type and are handled correctly according to
+  the spec at http://www.geopackage.org/spec/#gpb_spec. Override with msg.stripHeader</p>
 
+  <p><b>Input message</b></p>
+   <p>All the parameters which are configured in the configuration editor can also be passed in via the input message.
+   Parameter values passed in via the input message have precedence over configured values.
+   The names of the parameters which can be specified as part of the msg are mentioned <a href="#UI Configuration">here</a><p>
 </script>
